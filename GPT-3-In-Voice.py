@@ -22,6 +22,7 @@ def send_openai(question):
         engine="text-davinci-002",
         prompt=question,
         max_tokens=1024,
+        top_p=1.0,
         temperature=0.6,
     )
 
