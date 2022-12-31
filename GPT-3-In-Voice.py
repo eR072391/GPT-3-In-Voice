@@ -22,7 +22,7 @@ def send_openai(question):
         engine="text-davinci-002",
         prompt=question,
         max_tokens=1024,
-        temperature=0.5,
+        temperature=0.6,
     )
 
     # 生成した文章を表示する
