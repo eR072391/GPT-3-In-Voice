@@ -2,14 +2,16 @@ import speech_recognition as sr
 import openai
 from gtts import gTTS           #文字を音声に変換
 from playsound import playsound #音声を再生
+import os
 
 #GPT-3のAPIキーをここに
 OPENAI_API_KEY = ''
 
 def play_sound(answer):
     tts = gTTS(text=answer,lang="ja")
-    tts.save('/tmp/voice.mp3')
-    playsound("/tmp/voice.mp3")
+    tts.save('voice.mp3')
+    playsound("voice.mp3")
+    os.remove("voice.mp3")
 
 def send_openai(question):
     # GPT-3のAPIキーを設定する
@@ -25,9 +27,9 @@ def send_openai(question):
 
     # 生成した文章を表示する
     print("[*]回答")
-    answer = response["choices"][0]["text"]
+    texts = ''.join([choice['text'] for choice in response.choices])
+    print(texts)
     #play_sound(answer) #回答を音声に変換して再生
-    print(answer)
     
     
 def main():
