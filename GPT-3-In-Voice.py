@@ -17,7 +17,7 @@ def send_openai(question):
 
     # GPT-3を使用して文章を生成する
     response = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="text-davinci-002",
         prompt=question,
         max_tokens=1024,
         temperature=0.5,
